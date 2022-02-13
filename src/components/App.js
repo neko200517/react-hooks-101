@@ -24,10 +24,18 @@ const App = () => {
 
   const deleteAllEvents = (e) => {
     e.preventDefault();
-    dispatch({
-      type: 'DELETE_ALL_EVENT',
-    });
+    const result = window.confirm(
+      '全てのイベントを本当に削除しても良いですか？'
+    );
+    if (result) {
+      dispatch({
+        type: 'DELETE_ALL_EVENTS',
+      });
+    }
   };
+
+  const unCleatable = title === '' || body === '';
+  const unDeletable = state.length <= 0;
 
   return (
     <>
@@ -54,10 +62,18 @@ const App = () => {
             />
           </div>
 
-          <button className='btn btn-primary' onClick={addEvent}>
+          <button
+            className='btn btn-primary'
+            onClick={addEvent}
+            disabled={unCleatable}
+          >
             イベントを作成する
           </button>
-          <button className='btn btn-danger' onClick={deleteAllEvents}>
+          <button
+            className='btn btn-danger'
+            onClick={deleteAllEvents}
+            disabled={unDeletable}
+          >
             すべてのイベントを削除する
           </button>
 
