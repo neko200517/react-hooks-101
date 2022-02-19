@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Event from './Event';
+import AppContext from '../contexts/AppContext';
 
 const Events = ({ state, dispatch }) => {
+  const value = useContext(AppContext);
   return (
     <>
       <label htmlFor='formEventBody'>イベント一覧</label>
