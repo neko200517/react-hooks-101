@@ -110,6 +110,14 @@ const EventForm = () => {
         >
           全ての操作ログを削除する
         </button>
+        <button
+          className='btn btn-danger'
+          onClick={() => {
+            localStorage.clear();
+          }}
+        >
+          初期化
+        </button>
       </form>
     </>
   );
